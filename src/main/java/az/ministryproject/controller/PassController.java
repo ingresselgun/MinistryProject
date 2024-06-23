@@ -1,6 +1,5 @@
 package az.ministryproject.controller;
 
-import az.ministryproject.dto.PassDTO;
 import az.ministryproject.entity.Pass;
 
 import az.ministryproject.service.PassService;
@@ -43,10 +42,5 @@ public class PassController {
     }
 
 
-    @GetMapping("/dtos")
-    public List<PassDTO> getPassDTOs() {
-        return passService.transformPasses(pass -> new PassDTO(
-                pass.getId(), pass.getEntryTime(), pass.getExitTime(), pass.getHost().getName()
-        ));
+
     }
-}

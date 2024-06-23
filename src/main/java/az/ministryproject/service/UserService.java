@@ -3,7 +3,6 @@ package az.ministryproject.service;
 import az.ministryproject.entity.User;
 import az.ministryproject.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,18 +28,6 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public User updateUser(Long id, User newUser) {
-        return userRepository.findById(id)
-                .map(user -> {
-                    user.setName(newUser.getName());
-                    user.setRole(newUser.getRole());
-                    return userRepository.save(user);
-                })
-                .orElseGet(() -> {
-                    newUser.setId(id);
-                    return userRepository.save(newUser);
-                });
-    }
 
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
